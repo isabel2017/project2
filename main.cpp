@@ -66,12 +66,49 @@ int main(int argc, char *argv[])
    }
    cout <<"matA:  \n"<<matA<< endl;
     jacobi_method(A,n);
+
+	//copy matrix to arma matrix
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++)
         {
             jacobi_diag_matA(i,j)=A[i][j];
+			if (i == j) {
+				//keep diagonal elements in a seperate matrix
+				diag[i] = jacobi_diag_matA(i, j);
+			}
         }
     }
+
+	//in order to find lowest 3 eigen values
+	//repeat finding the min
+	int i = 0;
+	int check = 0;
+	int cnt = n;
+	double temp;
+	double min;
+	double lowest[3];
+	
+	while (cnt != n-3) {
+		min = diag[0];
+		for (i = 0; i < cnt; i++) {
+			if (min > diag[i]) {
+				min = diag[i];
+				check = i;
+			}
+		}
+		lowest[n - cnt] = min;
+		
+		temp = diag[check];
+		diag[check] = diag[cnt-1];
+		diag[cnt-1] = temp;
+
+		cnt--;
+	}
+	cout << "lowest 3 : " << endl;
+	for (i = 0; i < 3; i++) {
+		cout << lowest[i] << "     ";
+	}
+	cout << endl;
     cout <<"jacobi_diag_matA:  \n"<<jacobi_diag_matA<< endl;
 	/*
     vec arma_eigval;
