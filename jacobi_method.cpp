@@ -76,7 +76,7 @@ void jacobi_method(double** A, int n)
     }
     cout<<"iteration_count="<<iteration_count<<endl;
 
-
+	//system("pause");
 }
 
 
