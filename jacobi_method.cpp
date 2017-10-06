@@ -28,6 +28,13 @@ void jacobi_rotation(double** A,int k, int l,int n)
     double a_ik,a_il;
     double t,s,c;
 
+	//it test, if not initialized occurs error
+	//but in project, it works...
+	c = 0;
+	s = 0;
+	t = 0;
+
+
 //calculate rotation angel
     if(a_kl!=0){
 
@@ -76,7 +83,7 @@ void jacobi_method(double** A, int n)
     }
     cout<<"iteration_count="<<iteration_count<<endl;
 
-
+	//system("pause");
 }
 
 
